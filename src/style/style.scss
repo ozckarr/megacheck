@@ -1,0 +1,25 @@
+//@import "./_section-style";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.sideController {
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+}
+
+.controller {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  .controllerContent {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
