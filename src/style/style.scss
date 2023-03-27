@@ -3,10 +3,11 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .sideController {
-  position: absolute;
+  position: fixed;
   left: 1em;
   bottom: 1em;
 }
@@ -14,12 +15,28 @@ body {
 .controller {
   width: 100vw;
   height: 100vh;
-  position: relative;
+  position: absolute;
+
   .controllerContent {
     margin: 0;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.check {
+  background-size: 4em auto;
+  overflow: hidden;
+  display: flex;
+  &.checkPrimary {
+    background-image: url("./images/backgroundPrimary.png");
+  }
+  &.checkBlackWhite {
+    background-image: url("./images/backgroundBlackWhite.png");
+  }
+  .checkBorder {
+    width: inherit;
   }
 }
