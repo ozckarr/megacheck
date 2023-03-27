@@ -10,6 +10,8 @@ function App() {
     width: 20,
     margin: 1,
     thickness: 1,
+    date: "20/12 - 02",
+    font: "fontZeyada",
   });
 
   return (

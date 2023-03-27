@@ -4,6 +4,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  p {
+    margin: 0;
+  }
 }
 
 .sideController {
@@ -30,6 +33,7 @@ body {
   background-size: 4em auto;
   overflow: hidden;
   display: flex;
+  font-family: "Roboto", sans-serif;
   &.checkPrimary {
     background-image: url("./images/backgroundPrimary.png");
   }
@@ -38,5 +42,31 @@ body {
   }
   .checkBorder {
     width: inherit;
+    .checkContent {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .fontDancing {
+        font-family: "Dancing Script", cursive;
+      }
+      .fontDelicious {
+        font-family: "Delicious Handrawn", cursive;
+      }
+      .fontZeyada {
+        font-family: "Zeyada", cursive;
+      }
+      .checkDate {
+        border: 1px solid;
+        flex-grow: 1;
+        .checkDateStyle {
+          border-bottom: 2px solid black;
+          padding: 0 0.5em;
+        }
+        .checkRow {
+          display: flex;
+          flex-flow: row-reverse;
+        }
+      }
+    }
   }
 }

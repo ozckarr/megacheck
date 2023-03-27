@@ -1,7 +1,6 @@
 import React from "react";
 
 function Check({ checkSettings }) {
-  console.log(checkSettings.thickness);
   return (
     <div
       className="check checkPrimary"
@@ -17,7 +16,23 @@ function Check({ checkSettings }) {
           padding: checkSettings.margin + "cm",
           border: checkSettings.thickness + "px solid black",
         }}
-      ></div>
+      >
+        <div className="checkContent">
+          <div className="checkDate">
+            <div className="checkRow">
+              <div className={"checkDateStyle " + checkSettings.font}>
+                {checkSettings.date}
+              </div>
+              <p>Datum:</p>
+            </div>
+          </div>
+          <div className="checkDate"></div>
+          <div className="checkDate"></div>
+          <div className="checkDate"></div>
+          <div className="checkDate"></div>
+          <div className="checkDate"></div>
+        </div>
+      </div>
     </div>
   );
 }

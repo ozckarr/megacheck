@@ -9,6 +9,10 @@ import {
   AccordionDetails,
   Typography,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -109,6 +113,53 @@ function Controller({
                     })
                   }
                 />
+              </Stack>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography>Typsnitt</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Stack direction="column" spacing={1}>
+                <TextField
+                  id="standard-basic"
+                  label="Margin (cm)"
+                  variant="standard"
+                  type="number"
+                  value={checkSettings.margin}
+                  onChange={(e) =>
+                    setCheckSettings({
+                      ...checkSettings,
+                      margin: e.target.value,
+                    })
+                  }
+                />
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={checkSettings.font}
+                    label="Typsnitt"
+                    onChange={(e) =>
+                      setCheckSettings({
+                        ...checkSettings,
+                        font: e.target.font,
+                      })
+                    }
+                  >
+                    <MenuItem value={"fontDancing"}>Dancing Script</MenuItem>
+                    <MenuItem value={"fontDelicious"}>
+                      Delicious Handrawn
+                    </MenuItem>
+                    <MenuItem value={"fontZeyada"}>Zeyada</MenuItem>
+                  </Select>
+                </FormControl>
               </Stack>
             </AccordionDetails>
           </Accordion>

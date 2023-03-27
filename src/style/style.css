@@ -3,6 +3,9 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+body p {
+  margin: 0;
+}
 
 .sideController {
   position: fixed;
@@ -27,6 +30,7 @@ body {
   background-size: 4em auto;
   overflow: hidden;
   display: flex;
+  font-family: "Roboto", sans-serif;
 }
 .check.checkPrimary {
   background-image: url("./images/backgroundPrimary.png");
@@ -36,4 +40,30 @@ body {
 }
 .check .checkBorder {
   width: inherit;
+}
+.check .checkBorder .checkContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.check .checkBorder .checkContent .fontDancing {
+  font-family: "Dancing Script", cursive;
+}
+.check .checkBorder .checkContent .fontDelicious {
+  font-family: "Delicious Handrawn", cursive;
+}
+.check .checkBorder .checkContent .fontZeyada {
+  font-family: "Zeyada", cursive;
+}
+.check .checkBorder .checkContent .checkDate {
+  border: 1px solid;
+  flex-grow: 1;
+}
+.check .checkBorder .checkContent .checkDate .checkDateStyle {
+  border-bottom: 2px solid black;
+  padding: 0 0.5em;
+}
+.check .checkBorder .checkContent .checkDate .checkRow {
+  display: flex;
+  flex-flow: row-reverse;
 }/*# sourceMappingURL=style.css.map */
