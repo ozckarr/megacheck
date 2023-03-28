@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "MicrEncoding";
+  src: local("MicrEncoding-ZEDJ"), url("./fonts/MicrEncoding-ZEDJ.ttf") format("truetype");
+}
 body {
   margin: 0;
   padding: 0;
@@ -14,8 +18,6 @@ body p {
 }
 
 .controller {
-  width: 100vw;
-  height: 100vh;
   position: absolute;
 }
 .controller .controllerContent {
@@ -30,6 +32,7 @@ body p {
   background-size: 4em auto;
   overflow: hidden;
   display: flex;
+  line-height: 1;
   font-family: "Roboto", sans-serif;
 }
 .check.checkPrimary {
@@ -46,6 +49,10 @@ body p {
   flex-direction: column;
   height: 100%;
 }
+.check .checkBorder .checkContent .textToBottom {
+  display: flex;
+  flex-direction: column-reverse;
+}
 .check .checkBorder .checkContent .fontDancing {
   font-family: "Dancing Script", cursive;
 }
@@ -55,15 +62,28 @@ body p {
 .check .checkBorder .checkContent .fontZeyada {
   font-family: "Zeyada", cursive;
 }
+.check .checkBorder .checkContent .checkRow {
+  height: 16.6%;
+}
 .check .checkBorder .checkContent .checkDate {
-  border: 1px solid;
-  flex-grow: 1;
-}
-.check .checkBorder .checkContent .checkDate .checkDateStyle {
-  border-bottom: 2px solid black;
-  padding: 0 0.5em;
-}
-.check .checkBorder .checkContent .checkDate .checkRow {
   display: flex;
   flex-flow: row-reverse;
+}
+.check .checkBorder .checkContent .checkDate .checkDateStyle {
+  padding: 0 0.5em;
+}
+.check .checkBorder .checkContent .bottomRowContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.check .checkBorder .checkContent .bottomRowContent .bottomRow {
+  font-family: "MicrEncoding";
+  display: flex;
+}
+.check .checkBorder .checkContent .bottomRowContent .bottomRow p {
+  flex-grow: 1;
+}
+.check .checkBorder .checkContent .bottomRowContent .bottomRow .bottomRowFiller {
+  flex-grow: 4;
 }/*# sourceMappingURL=style.css.map */

@@ -1,36 +1,51 @@
 import React from "react";
+import BottomRow from "./BottomRow";
 
-function Check({ checkSettings }) {
+function Check({ check }) {
   return (
     <div
-      className="check checkPrimary"
+      className={`check ${check.background}`}
       style={{
-        height: checkSettings.height + "cm",
-        width: checkSettings.width + "cm",
+        height: check.height + "cm",
+        width: check.width + "cm",
       }}
     >
       <div
         className="checkBorder"
         style={{
-          margin: checkSettings.margin + "cm",
-          padding: checkSettings.margin + "cm",
-          border: checkSettings.thickness + "px solid black",
+          margin: check.margin + "cm",
+          padding: check.margin + "cm",
+          border: check.thickness + "px solid black",
         }}
       >
         <div className="checkContent">
-          <div className="checkDate">
-            <div className="checkRow">
-              <div className={"checkDateStyle " + checkSettings.font}>
-                {checkSettings.date}
+          <div className="checkRow">
+            <div className="checkDate">
+              <div className={"checkDateStyle " + check.font}>
+                <p style={{ fontSize: check.handwrittenSize + "px" }}>
+                  {check.dateText}
+                </p>
               </div>
-              <p>Datum:</p>
+              <p
+                className="textToBottom"
+                style={{ fontSize: check.fontSize + "px" }}
+              >
+                Datum:
+              </p>
             </div>
           </div>
-          <div className="checkDate"></div>
-          <div className="checkDate"></div>
-          <div className="checkDate"></div>
-          <div className="checkDate"></div>
-          <div className="checkDate"></div>
+          <div className="checkRow"></div>
+          <div className="checkRow"></div>
+          <div className="checkRow"></div>
+          <div className="checkRow"></div>
+          <div className="checkRow">
+            <BottomRow
+              aba={check.aba}
+              accountNr={check.accountNr}
+              checkNr={check.checkNr}
+              codeSize={check.codeSize}
+            />
+          </div>
         </div>
       </div>
     </div>

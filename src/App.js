@@ -5,13 +5,20 @@ import Check from "./style/components/Check";
 
 function App() {
   const [showSettings, setShowSettings] = useState(false);
-  const [checkSettings, setCheckSettings] = useState({
+  const [check, setCheck] = useState({
     height: 9,
     width: 20,
+    background: "checkPrimary",
     margin: 1,
     thickness: 1,
-    date: "20/12 - 02",
     font: "fontZeyada",
+    handwrittenSize: 16,
+    fontSize: 16,
+    dateText: "20/12 - 02",
+    aba: 123456789,
+    accountNr: 12345678901,
+    checkNr: 1234,
+    codeSize: 20,
   });
 
   return (
@@ -20,8 +27,8 @@ function App() {
         <Controller
           showSettings={showSettings}
           setShowSettings={setShowSettings}
-          checkSettings={checkSettings}
-          setCheckSettings={setCheckSettings}
+          check={check}
+          setCheck={setCheck}
         />
       ) : (
         <></>
@@ -31,7 +38,7 @@ function App() {
         showSettings={showSettings}
         setShowSettings={setShowSettings}
       />
-      <Check checkSettings={checkSettings} />
+      <Check check={check} />
     </div>
   );
 }

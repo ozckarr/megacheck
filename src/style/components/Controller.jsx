@@ -14,16 +14,24 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import CancelIcon from "@mui/icons-material/Cancel";
 
-function Controller({
-  checkSettings,
-  setCheckSettings,
-  setShowSettings,
-  showSettings,
-}) {
+function Controller({ check, setCheck, setShowSettings, showSettings }) {
+  const handleFont = (e) => {
+    setCheck({
+      ...check,
+      font: e.target.value,
+    });
+  };
+  const handleBackground = (e) => {
+    setCheck({
+      ...check,
+      background: e.target.value,
+    });
+  };
   return (
     <div className="controller">
       <Card sx={{ width: " fit-content" }} className="controllerContent">
@@ -38,13 +46,14 @@ function Controller({
           </IconButton>
         </Stack>
         <CardContent>
+          {/*-------Generellt------*/}
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Storlek</Typography>
+              <Typography>Generellt</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Stack direction="row" spacing={1}>
@@ -53,10 +62,10 @@ function Controller({
                   label="Bredd (cm)"
                   variant="standard"
                   type="number"
-                  value={checkSettings.width}
+                  value={check.width}
                   onChange={(e) =>
-                    setCheckSettings({
-                      ...checkSettings,
+                    setCheck({
+                      ...check,
                       width: e.target.value,
                     })
                   }
@@ -66,17 +75,31 @@ function Controller({
                   label="Höjd (cm)"
                   variant="standard"
                   type="number"
-                  value={checkSettings.height}
+                  value={check.height}
                   onChange={(e) =>
-                    setCheckSettings({
-                      ...checkSettings,
+                    setCheck({
+                      ...check,
                       height: e.target.value,
                     })
                   }
                 />
               </Stack>
+              <FormControl fullWidth style={{ marginTop: "1em" }}>
+                <InputLabel id="demo-simple-select-label">Bakgrund</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-background"
+                  value={check.background}
+                  label="Bakgrund"
+                  onChange={handleBackground}
+                >
+                  <MenuItem value={"checkPrimary"}>Original</MenuItem>
+                  <MenuItem value={"checkBlackWhite"}>Svart och Vit</MenuItem>
+                </Select>
+              </FormControl>
             </AccordionDetails>
           </Accordion>
+          {/*-------Ram------*/}
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -92,10 +115,10 @@ function Controller({
                   label="Margin (cm)"
                   variant="standard"
                   type="number"
-                  value={checkSettings.margin}
+                  value={check.margin}
                   onChange={(e) =>
-                    setCheckSettings({
-                      ...checkSettings,
+                    setCheck({
+                      ...check,
                       margin: e.target.value,
                     })
                   }
@@ -105,10 +128,10 @@ function Controller({
                   label="Tjocklek (px)"
                   variant="standard"
                   type="number"
-                  value={checkSettings.thickness}
+                  value={check.thickness}
                   onChange={(e) =>
-                    setCheckSettings({
-                      ...checkSettings,
+                    setCheck({
+                      ...check,
                       thickness: e.target.value,
                     })
                   }
@@ -116,6 +139,7 @@ function Controller({
               </Stack>
             </AccordionDetails>
           </Accordion>
+          {/*-------Typsnitt------*/}
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -128,30 +152,53 @@ function Controller({
               <Stack direction="column" spacing={1}>
                 <TextField
                   id="standard-basic"
-                  label="Margin (cm)"
+                  label="Textstorlek"
                   variant="standard"
                   type="number"
-                  value={checkSettings.margin}
+                  value={check.fontSize}
                   onChange={(e) =>
-                    setCheckSettings({
-                      ...checkSettings,
-                      margin: e.target.value,
+                    setCheck({
+                      ...check,
+                      fontSize: e.target.value,
+                    })
+                  }
+                />
+                <TextField
+                  id="standard-basic"
+                  label="Textstorlek - handskrivet"
+                  variant="standard"
+                  type="number"
+                  value={check.handwrittenSize}
+                  onChange={(e) =>
+                    setCheck({
+                      ...check,
+                      handwrittenSize: e.target.value,
+                    })
+                  }
+                />
+                <TextField
+                  id="standard-basic"
+                  label="Textstorlek - kod botten"
+                  variant="standard"
+                  type="number"
+                  value={check.codeSize}
+                  onChange={(e) =>
+                    setCheck({
+                      ...check,
+                      codeSize: e.target.value,
                     })
                   }
                 />
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                  <InputLabel id="demo-simple-select-label">
+                    Typsnitt
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={checkSettings.font}
+                    value={check.font}
                     label="Typsnitt"
-                    onChange={(e) =>
-                      setCheckSettings({
-                        ...checkSettings,
-                        font: e.target.font,
-                      })
-                    }
+                    onChange={handleFont}
                   >
                     <MenuItem value={"fontDancing"}>Dancing Script</MenuItem>
                     <MenuItem value={"fontDelicious"}>
@@ -162,6 +209,58 @@ function Controller({
                 </FormControl>
               </Stack>
             </AccordionDetails>
+          </Accordion>
+          {/*-------Text------*/}
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography>Text</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Stack direction="column" spacing={1}>
+                <TextField
+                  id="standard-basic"
+                  label="Datum Text"
+                  variant="standard"
+                  value={check.dateText}
+                  onChange={(e) =>
+                    setCheck({
+                      ...check,
+                      dateText: e.target.value,
+                    })
+                  }
+                />
+              </Stack>
+            </AccordionDetails>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel2a-content"
+                id="panel2a-header"
+              >
+                <Typography>Tråknummer</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Stack direction="column" spacing={1}>
+                  <TextField
+                    id="standard-basic"
+                    label="Datum Text"
+                    variant="standard"
+                    type="number"
+                    value={check.aba}
+                    onChange={(e) =>
+                      setCheck({
+                        ...check,
+                        aba: e.target.value,
+                      })
+                    }
+                  />
+                </Stack>
+              </AccordionDetails>
+            </Accordion>
           </Accordion>
         </CardContent>
       </Card>
